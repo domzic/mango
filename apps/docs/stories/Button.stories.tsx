@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Carousel } from '@mango-ui/carousel';
+import { Carousel } from "@mango-ui/carousel";
 
 export default {
-  title: 'Carousel',
+  title: "Carousel",
   component: Carousel,
 } as ComponentMeta<typeof Carousel>;
 
