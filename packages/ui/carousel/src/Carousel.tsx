@@ -1,5 +1,3 @@
 export function Carousel() {
-  return (
-    <div>This is a carousel!</div>
-  );
-};
+  return <div>This is a carousel!</div>;
+}
