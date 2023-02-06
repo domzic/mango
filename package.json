@@ -19,7 +19,7 @@
   "devDependencies": {
     "@changesets/cli": "^2.25.2",
     "eslint": "^8.29.0",
-    "eslint-config-mango": "workspace:0.0.0",
+    "eslint-config-mango": "workspace:*",
     "prettier": "^2.8.0",
     "turbo": "latest"
   },
