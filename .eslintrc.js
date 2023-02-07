@@ -1,9 +1,9 @@
 module.exports = {
-  root: true,
-  extends: ["mango"],
-  settings: {
-    next: {
-      rootDir: ["apps/*/"],
+    root: true,
+    extends: ['mango'],
+    settings: {
+        next: {
+            rootDir: ['apps/*/'],
+        },
     },
-  },
-};
+}

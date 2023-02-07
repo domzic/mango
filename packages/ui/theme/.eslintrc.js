@@ -1,4 +1,4 @@
 module.exports = {
-  root: true,
-  extends: ["mango"],
-};
+    root: true,
+    extends: ['mango'],
+}
