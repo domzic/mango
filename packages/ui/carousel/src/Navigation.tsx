@@ -1,16 +1,14 @@
 import styled from 'styled-components'
+import { useCarouselDispatch } from './state/Context'
 
-interface NavigationProps {
-    currentIndex: number
-    setCurrentIndex: (newIndex: number) => void
-}
-export function Navigation({ currentIndex, setCurrentIndex }: NavigationProps) {
+export function Navigation() {
+    const dispatch = useCarouselDispatch()
     return (
         <Wrapper>
-            <button onClick={() => setCurrentIndex(currentIndex--)}>
+            <button onClick={() => dispatch({ type: 'SHOW_PREV' })}>
                 Previous
             </button>
-            <button onClick={() => setCurrentIndex(currentIndex++)}>
+            <button onClick={() => dispatch({ type: 'SHOW_NEXT' })}>
                 Next
             </button>
         </Wrapper>
