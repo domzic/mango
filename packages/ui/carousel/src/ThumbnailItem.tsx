@@ -41,10 +41,10 @@ export function ThumbnailItem({ children, index }: ThumbnailItem) {
 
 const Wrapper = styled.li`
     height: 100%;
+    flex: 1 0 64px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: var(--height);
 
     &.active {
         outline: -webkit-focus-ring-color auto 1px;
@@ -53,5 +53,7 @@ const Wrapper = styled.li`
     & img {
         display: block;
         height: 100%;
+        width: 100%;
+        object-fit: cover;
     }
 `;

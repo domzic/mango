@@ -36,7 +36,7 @@ export const Primary: ComponentStory<typeof Carousel> = (props) => (
             <img src={`https://picsum.photos/300/200?${Math.random()}`} />
         </Carousel.Item>
         <Carousel.Item>
-            <img src={`https://picsum.photos/300/200?${Math.random()}`} />
+            <img src={`https://picsum.photos/300/250?${Math.random()}`} />
         </Carousel.Item>
         <Carousel.Item>
             <img src={`https://picsum.photos/300/200?${Math.random()}`} />

@@ -12,7 +12,7 @@ export function Thumbnails({ children, height = 48 }: ThumbnailsProps) {
     const dispatch = useCarouselDispatch();
 
     return (
-        <Wrapper style={{ '--thumbnails-height': height + 'px' }}>
+        <List style={{ '--thumbnails-height': height + 'px' }}>
             {React.Children.map(children, (child, index) => {
                 if (React.isValidElement(child)) {
                     return typeof child.type === 'string' ? (
@@ -24,17 +24,20 @@ export function Thumbnails({ children, height = 48 }: ThumbnailsProps) {
                     );
                 }
             })}
-        </Wrapper>
+        </List>
     );
 }
 
-const Wrapper = styled.ol`
-    display: flex;
-    justify-content: center;
-    gap: 4px;
+const List = styled.ol`
     overflow: auto;
+    white-space: nowrap;
+    width: 100%;
     height: var(--thumbnails-height);
     padding: 4px;
+
+    & li:not(:last-of-type) {
+        margin-right: 4px;
+    }
 
     -ms-overflow-style: none;
     scrollbar-width: none;
