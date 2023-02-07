@@ -29,11 +29,12 @@ export function Thumbnails({ children, height = 48 }: ThumbnailsProps) {
 }
 
 const List = styled.ol`
+    width: max(50%, 300px);
     overflow: auto;
     white-space: nowrap;
-    width: 100%;
     height: var(--thumbnails-height);
-    padding: 4px;
+    padding: 8px;
+    margin: 0 auto;
 
     & li:not(:last-of-type) {
         margin-right: 4px;
