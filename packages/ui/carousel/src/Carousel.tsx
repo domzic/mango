@@ -8,6 +8,7 @@ import {
     useCarouselDispatch,
     useCurrentIndex,
 } from './state/Context';
+import { Thumbnails } from './Thumbnails';
 
 interface CarouselProps {
     children: React.ReactNode[];
@@ -18,6 +19,7 @@ function CarouselRoot({ children }: CarouselProps) {
             <CarouselProvider>
                 <Wrapper>
                     <CarouselInner>{children}</CarouselInner>
+                    <Thumbnails>{children}</Thumbnails>
                     <Navigation />
                 </Wrapper>
             </CarouselProvider>
@@ -47,7 +49,7 @@ function CarouselInner({ children }: CarouselInnerProps) {
 
 const Inner = styled.div<{ currentIndex: number }>`
     white-space: nowrap;
-    transition: transform 0.3s;
+    transition: transform 0.3s ease-in-out;
     transform: ${({ currentIndex }) => `translateX(-${currentIndex * 100}%)`};
 `;
 

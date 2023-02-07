@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Carousel } from '@mango-ui/carousel'
+import { Carousel } from '@mango-ui/carousel';
 
 export default {
     title: 'Carousel',
@@ -13,30 +13,51 @@ export default {
             control: { type: 'select' },
         },
     },
-} as ComponentMeta<typeof Carousel>
+} as ComponentMeta<typeof Carousel>;
 
 export const Primary: ComponentStory<typeof Carousel> = (props) => (
     <Carousel {...props}>
         <Carousel.Item>
-            <img src={`https://picsum.photos/200/300?${Math.random()}`} />
+            <img src={`https://picsum.photos/300/200?${Math.random()}`} />
         </Carousel.Item>
         <Carousel.Item>
-            <img src={`https://picsum.photos/200/300?${Math.random()}`} />
+            <img src={`https://picsum.photos/300/200?${Math.random()}`} />
         </Carousel.Item>
         <Carousel.Item>
-            <img src={`https://picsum.photos/200/300?${Math.random()}`} />
+            <img src={`https://picsum.photos/300/200?${Math.random()}`} />
         </Carousel.Item>
         <Carousel.Item>
-            <img src={`https://picsum.photos/200/300?${Math.random()}`} />
+            <img src={`https://picsum.photos/300/200?${Math.random()}`} />
         </Carousel.Item>
         <Carousel.Item>
-            <img src={`https://picsum.photos/200/300?${Math.random()}`} />
+            <img src={`https://picsum.photos/300/200?${Math.random()}`} />
         </Carousel.Item>
         <Carousel.Item>
-            <img src={`https://picsum.photos/200/300?${Math.random()}`} />
+            <img src={`https://picsum.photos/300/200?${Math.random()}`} />
         </Carousel.Item>
         <Carousel.Item>
-            <img src={`https://picsum.photos/200/300?${Math.random()}`} />
+            <img src={`https://picsum.photos/300/200?${Math.random()}`} />
+        </Carousel.Item>
+        <Carousel.Item>
+            <img src={`https://picsum.photos/300/200?${Math.random()}`} />
+        </Carousel.Item>
+        <Carousel.Item>
+            <img src={`https://picsum.photos/300/200?${Math.random()}`} />
+        </Carousel.Item>
+        <Carousel.Item>
+            <img src={`https://picsum.photos/300/200?${Math.random()}`} />
+        </Carousel.Item>
+        <Carousel.Item>
+            <img src={`https://picsum.photos/300/200?${Math.random()}`} />
+        </Carousel.Item>
+        <Carousel.Item>
+            <img src={`https://picsum.photos/300/200?${Math.random()}`} />
+        </Carousel.Item>
+        <Carousel.Item>
+            <img src={`https://picsum.photos/300/200?${Math.random()}`} />
+        </Carousel.Item>
+        <Carousel.Item>
+            <img src={`https://picsum.photos/300/200?${Math.random()}`} />
         </Carousel.Item>
     </Carousel>
-)
+);
