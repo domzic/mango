@@ -2,7 +2,7 @@ import React from "react";
 
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Carousel, CarouselItem } from "@mango-ui/carousel";
+import { Carousel } from "@mango-ui/carousel";
 
 export default {
   title: "Carousel",
@@ -17,26 +17,26 @@ export default {
 
 export const Primary: ComponentStory<typeof Carousel> = (props) => (
   <Carousel {...props}>
-    <CarouselItem>
+    <Carousel.Item>
       <img src={`https://picsum.photos/200/300?${Math.random()}`} />
-    </CarouselItem>
-    <CarouselItem>
+    </Carousel.Item>
+    <Carousel.Item>
       <img src={`https://picsum.photos/200/300?${Math.random()}`} />
-    </CarouselItem>
-    <CarouselItem>
+    </Carousel.Item>
+    <Carousel.Item>
       <img src={`https://picsum.photos/200/300?${Math.random()}`} />
-    </CarouselItem>
-    <CarouselItem>
+    </Carousel.Item>
+    <Carousel.Item>
       <img src={`https://picsum.photos/200/300?${Math.random()}`} />
-    </CarouselItem>
-    <CarouselItem>
+    </Carousel.Item>
+    <Carousel.Item>
       <img src={`https://picsum.photos/200/300?${Math.random()}`} />
-    </CarouselItem>
-    <CarouselItem>
+    </Carousel.Item>
+    <Carousel.Item>
       <img src={`https://picsum.photos/200/300?${Math.random()}`} />
-    </CarouselItem>
-    <CarouselItem>
+    </Carousel.Item>
+    <Carousel.Item>
       <img src={`https://picsum.photos/200/300?${Math.random()}`} />
-    </CarouselItem>
+    </Carousel.Item>
   </Carousel>
 );

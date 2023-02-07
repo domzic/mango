@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-interface CarouselItemProps {
+interface ItemProps {
   children: React.ReactNode;
 }
-export function CarouselItem({ children }: CarouselItemProps) {
+export function Item({ children }: ItemProps) {
   return <Wrapper>{children}</Wrapper>;
 }
 

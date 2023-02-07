@@ -1,12 +1,13 @@
 import React from "react";
 import { ThemeProvider } from "@mango-ui/theme";
 import styled from "styled-components";
-import { CarouselNavigation } from "./CarouselNavigation";
+import { Navigation } from "./Navigation";
+import { Item } from "./Item";
 
 interface CarouselProps {
   children: React.ReactNode[];
 }
-export function Carousel({ children }: CarouselProps) {
+function CarouselRoot({ children }: CarouselProps) {
   const [activeIndex, setActiveIndex] = React.useState(0);
   const childrenCount = React.Children.count(children);
 
@@ -25,15 +26,11 @@ export function Carousel({ children }: CarouselProps) {
     <ThemeProvider>
       <Wrapper>
         <Inner activeIndex={activeIndex}>{children}</Inner>
-        <CarouselNavigation
-          currentIndex={activeIndex}
-          setCurrentIndex={updateIndex}
-        />
+        <Navigation currentIndex={activeIndex} setCurrentIndex={updateIndex} />
       </Wrapper>
     </ThemeProvider>
   );
 }
-
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
@@ -48,3 +45,5 @@ const Inner = styled.div<InnerProps>`
   transition: transform 0.3s;
   transform: ${({ activeIndex }) => `translateX(-${activeIndex * 100}%)`};
 `;
+
+export const Carousel = Object.assign(CarouselRoot, { Item });

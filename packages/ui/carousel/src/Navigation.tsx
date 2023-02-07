@@ -1,13 +1,10 @@
 import styled from "styled-components";
 
-interface CarouselNavigationProps {
+interface NavigationProps {
   currentIndex: number;
   setCurrentIndex: (newIndex: number) => void;
 }
-export function CarouselNavigation({
-  currentIndex,
-  setCurrentIndex,
-}: CarouselNavigationProps) {
+export function Navigation({ currentIndex, setCurrentIndex }: NavigationProps) {
   return (
     <Wrapper>
       <button onClick={() => setCurrentIndex(currentIndex--)}>Previous</button>
