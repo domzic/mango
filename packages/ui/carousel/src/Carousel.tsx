@@ -6,6 +6,7 @@ import {
     CarouselProvider,
     useCarouselDispatch,
     useCurrentIndex,
+    useTotal,
 } from './state/Context';
 import { Thumbnails } from './Thumbnails';
 import { useSwipeable } from 'react-swipeable';
@@ -44,8 +45,16 @@ function CarouselInner({
     interval = 3000,
 }: CarouselInnerProps) {
     const currentIndex = useCurrentIndex();
+    const total = useTotal();
     const dispatch = useCarouselDispatch();
     const [isPaused, setIsPaused] = React.useState(false);
+    const [transitionEnabled, setTransitionEnabled] = React.useState(true);
+
+    React.useEffect(() => {
+        if (currentIndex === 1 || currentIndex === total) {
+            setTransitionEnabled(true);
+        }
+    }, [currentIndex, total]);
 
     React.useEffect(() => {
         if (!autoPlay) {
@@ -69,21 +78,31 @@ function CarouselInner({
         dispatch({ type: 'SET_TOTAL', payload: children.length });
     }, [children.length]);
 
+    const handlePrev = () => {
+        setTransitionEnabled(currentIndex !== 0);
+        dispatch({ type: 'SHOW_PREV' });
+    };
+
+    const handleNext = () => {
+        setTransitionEnabled(currentIndex !== total - 1);
+        dispatch({ type: 'SHOW_NEXT' });
+    };
+
     const onKeyPress = (e: React.KeyboardEvent<HTMLOListElement>) => {
         setIsPaused(true);
         switch (e.code) {
             case 'ArrowRight':
-                return dispatch({ type: 'SHOW_NEXT' });
+                return handleNext();
             case 'ArrowLeft':
-                return dispatch({ type: 'SHOW_PREV' });
+                return handlePrev();
             default:
                 return;
         }
     };
 
     const swipeHandlers = useSwipeable({
-        onSwipedLeft: () => dispatch({ type: 'SHOW_NEXT' }),
-        onSwipedRight: () => dispatch({ type: 'SHOW_PREV' }),
+        onSwipedLeft: () => handleNext,
+        onSwipedRight: handlePrev,
     });
 
     return (
@@ -99,6 +118,12 @@ function CarouselInner({
             tabIndex={-1}
             role="region"
             aria-labelledby="heading"
+            style={{
+                transform: `translateX(-${currentIndex * 100}%)`,
+                transition: !transitionEnabled
+                    ? 'none'
+                    : 'transform 0.3s ease-in-out',
+            }}
         >
             <h3 id="heading" className="visually-hidden">
                 {ariaLabel}
@@ -126,8 +151,6 @@ function CarouselInner({
 
 const Inner = styled.section<{ currentIndex: number }>`
     white-space: nowrap;
-    transition: transform 0.3s ease-in-out;
-    transform: ${({ currentIndex }) => `translateX(-${currentIndex * 100}%)`};
     outline: none;
 `;
 

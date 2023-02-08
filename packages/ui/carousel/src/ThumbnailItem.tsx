@@ -80,7 +80,7 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     padding: 1px;
-    margin: 1px;
+    margin: 4px;
     background: #fff;
     box-shadow: 0px 0px 8px -4px rgb(0 0 0 / 80%);
     position: relative;
