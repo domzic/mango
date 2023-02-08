@@ -9,6 +9,30 @@ interface ThumbnailItem {
 export function ThumbnailItem({ children, index }: ThumbnailItem) {
     const currentIndex = useCurrentIndex();
     const dispatch = useCarouselDispatch();
+    const [isActive, setIsActive] = React.useState(false);
+    const ref = React.useRef<HTMLLIElement>(null);
+    const prevCurrentIndex = React.useRef(currentIndex);
+
+    React.useEffect(() => {
+        setIsActive(currentIndex === index);
+    }, [currentIndex, index]);
+
+    React.useEffect(() => {
+        if (
+            (prevCurrentIndex.current > currentIndex &&
+                index == currentIndex - 1) ||
+            (prevCurrentIndex.current < currentIndex &&
+                index == currentIndex + 1)
+        ) {
+            ref.current!.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [index, currentIndex]);
+
+    React.useEffect(() => {
+        return () => {
+            prevCurrentIndex.current = currentIndex;
+        };
+    }, [currentIndex]);
 
     const handleSelect = () => {
         dispatch({
@@ -28,8 +52,9 @@ export function ThumbnailItem({ children, index }: ThumbnailItem) {
 
     return (
         <Wrapper
+            ref={ref}
             role="button"
-            className={index === currentIndex ? 'active' : ''}
+            className={isActive ? 'active' : ''}
             tabIndex={0}
             onClick={handleSelect}
             onKeyDown={onKeyPress}
@@ -58,7 +83,8 @@ const Wrapper = styled.li`
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 2px;
+    padding: 1px;
+    margin: 1px;
     background: #fff;
     box-shadow: 0px 0px 8px -4px rgb(0 0 0 / 80%);
     position: relative;

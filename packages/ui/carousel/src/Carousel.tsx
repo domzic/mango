@@ -67,6 +67,17 @@ function CarouselInner({
         dispatch({ type: 'SET_TOTAL', payload: children.length });
     }, [children.length]);
 
+    const onKeyPress = (e: React.KeyboardEvent<HTMLDivElement>) => {
+        switch (e.code) {
+            case 'ArrowRight':
+                return dispatch({ type: 'SHOW_NEXT' });
+            case 'ArrowLeft':
+                return dispatch({ type: 'SHOW_PREV' });
+            default:
+                return;
+        }
+    };
+
     const swipeHandlers = useSwipeable({
         onSwipedLeft: () => dispatch({ type: 'SHOW_NEXT' }),
         onSwipedRight: () => dispatch({ type: 'SHOW_PREV' }),
@@ -80,6 +91,8 @@ function CarouselInner({
             onMouseLeave={() => setIsPaused(false)}
             onTouchStart={() => setIsPaused(true)}
             onTouchEnd={() => setIsPaused(false)}
+            onKeyDown={onKeyPress}
+            tabIndex={0}
         >
             {children}
         </Inner>
@@ -90,6 +103,7 @@ const Inner = styled.div<{ currentIndex: number }>`
     white-space: nowrap;
     transition: transform 0.3s ease-in-out;
     transform: ${({ currentIndex }) => `translateX(-${currentIndex * 100}%)`};
+    outline: none;
 `;
 
 export const Carousel = Object.assign(CarouselRoot, { Item });
