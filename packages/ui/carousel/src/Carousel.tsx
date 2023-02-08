@@ -12,6 +12,7 @@ import { useSwipeable } from 'react-swipeable';
 
 interface CarouselProps {
     children: React.ReactNode[];
+    ariaLabel?: string;
     autoPlay?: boolean;
     interval?: number;
 }
@@ -38,6 +39,7 @@ type CarouselInnerProps = CarouselProps;
 
 function CarouselInner({
     children,
+    ariaLabel = 'Images carousel',
     autoPlay = true,
     interval = 3000,
 }: CarouselInnerProps) {
@@ -67,7 +69,8 @@ function CarouselInner({
         dispatch({ type: 'SET_TOTAL', payload: children.length });
     }, [children.length]);
 
-    const onKeyPress = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    const onKeyPress = (e: React.KeyboardEvent<HTMLOListElement>) => {
+        setIsPaused(true);
         switch (e.code) {
             case 'ArrowRight':
                 return dispatch({ type: 'SHOW_NEXT' });
@@ -92,14 +95,36 @@ function CarouselInner({
             onTouchStart={() => setIsPaused(true)}
             onTouchEnd={() => setIsPaused(false)}
             onKeyDown={onKeyPress}
-            tabIndex={0}
+            onKeyUp={() => setIsPaused(false)}
+            tabIndex={-1}
+            role="region"
+            aria-labelledby="heading"
         >
-            {children}
+            <h3 id="heading" className="visually-hidden">
+                {ariaLabel}
+            </h3>
+            {React.Children.map(children, (child, index) => {
+                if (React.isValidElement(child)) {
+                    return typeof child.type === 'string' ? (
+                        child
+                    ) : (
+                        <Item
+                            aria-label={`slide ${index} of ${children.length}`}
+                            aria-hidden={index !== currentIndex}
+                            aria-current={
+                                index === currentIndex ? 'true' : 'false'
+                            }
+                        >
+                            {child.props.children}
+                        </Item>
+                    );
+                }
+            })}
         </Inner>
     );
 }
 
-const Inner = styled.div<{ currentIndex: number }>`
+const Inner = styled.ol<{ currentIndex: number }>`
     white-space: nowrap;
     transition: transform 0.3s ease-in-out;
     transform: ${({ currentIndex }) => `translateX(-${currentIndex * 100}%)`};

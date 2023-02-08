@@ -17,7 +17,12 @@ export function Thumbnails({ children, height = 64 }: ThumbnailsProps) {
                     '--thumbnails-height': height + 'px',
                 } as React.CSSProperties
             }
+            tabIndex={-1}
+            aria-labelledby="thumbnails-heading"
         >
+            <h3 id="thumbnails-heading" className="visually-hidden">
+                Thumbnails
+            </h3>
             <NavigationButton.Prev />
             <List>
                 {React.Children.map(children, (child, index) => {
@@ -37,7 +42,7 @@ export function Thumbnails({ children, height = 64 }: ThumbnailsProps) {
     );
 }
 
-const Container = styled.div`
+const Container = styled.section`
     position: absolute;
     bottom: 16px;
     left: 0;

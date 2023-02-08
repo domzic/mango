@@ -44,6 +44,15 @@ export function useCurrentIndex() {
     return context.state.currentIndex;
 }
 
+export function useTotal() {
+    const context = React.useContext(CarouselContext);
+    if (!context) {
+        throw new Error('useCarousel must be used within CarouselProvider.');
+    }
+
+    return context.state.total;
+}
+
 export function useCarouselDispatch() {
     const context = React.useContext(CarouselContext);
     if (!context) {

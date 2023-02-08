@@ -1,6 +1,10 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { useCarouselDispatch, useCurrentIndex } from './state/Context';
+import {
+    useCarouselDispatch,
+    useCurrentIndex,
+    useTotal,
+} from './state/Context';
 
 interface ThumbnailItem {
     children: React.ReactNode;
@@ -8,6 +12,7 @@ interface ThumbnailItem {
 }
 export function ThumbnailItem({ children, index }: ThumbnailItem) {
     const currentIndex = useCurrentIndex();
+    const total = useTotal();
     const dispatch = useCarouselDispatch();
     const [isActive, setIsActive] = React.useState(false);
     const ref = React.useRef<HTMLLIElement>(null);
@@ -58,23 +63,14 @@ export function ThumbnailItem({ children, index }: ThumbnailItem) {
             tabIndex={0}
             onClick={handleSelect}
             onKeyDown={onKeyPress}
+            aria-hidden={isActive ? 'false' : 'true'}
+            aria-label={`Thumbnail ${index} of ${total}`}
+            aria-current={isActive ? 'true' : 'false'}
         >
             {children}
         </Wrapper>
     );
 }
-
-const animateGradient = keyframes`
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-`;
 
 const Wrapper = styled.li`
     height: 100%;
@@ -98,6 +94,7 @@ const Wrapper = styled.li`
     }
 
     &.active {
-        // TODO
+        transform: scale(1.1);
+        z-index: 1;
     }
 `;

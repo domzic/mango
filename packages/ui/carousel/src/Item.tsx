@@ -1,10 +1,19 @@
 import styled from 'styled-components';
 
-interface ItemProps {
+interface ItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
     children: React.ReactNode;
 }
-export function Item({ children }: ItemProps) {
-    return <Wrapper>{children}</Wrapper>;
+export function Item({ children, ...props }: ItemProps) {
+    return (
+        <Wrapper
+            role="group"
+            aria-roledescription="slide"
+            tabIndex={-1}
+            {...props}
+        >
+            {children}
+        </Wrapper>
+    );
 }
 
 const Wrapper = styled.li`

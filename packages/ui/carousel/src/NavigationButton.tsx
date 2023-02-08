@@ -6,6 +6,7 @@ export function Prev() {
     const dispatch = useCarouselDispatch();
     return (
         <PrevButton onClick={() => dispatch({ type: 'SHOW_PREV' })}>
+            <span className="visually-hidden">Previous</span>
             <ChevronLeft />
         </PrevButton>
     );
@@ -15,6 +16,7 @@ export function Next() {
     const dispatch = useCarouselDispatch();
     return (
         <NextButton onClick={() => dispatch({ type: 'SHOW_NEXT' })}>
+            <span className="visually-hidden">Next</span>
             <ChevronRight />
         </NextButton>
     );
