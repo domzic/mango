@@ -15,8 +15,55 @@ export default {
     },
 } as ComponentMeta<typeof Carousel>;
 
-export const Primary: ComponentStory<typeof Carousel> = (props) => (
+export const Default: ComponentStory<typeof Carousel> = (props) => (
     <Carousel {...props}>
+        <Carousel.Item>
+            <img src={`https://picsum.photos/400/250?${Math.random()}`} />
+        </Carousel.Item>
+        <Carousel.Item>
+            <img src={`https://picsum.photos/400/250?${Math.random()}`} />
+        </Carousel.Item>
+        <Carousel.Item>
+            <img src={`https://picsum.photos/400/250?${Math.random()}`} />
+        </Carousel.Item>
+        <Carousel.Item>
+            <img src={`https://picsum.photos/400/250?${Math.random()}`} />
+        </Carousel.Item>
+        <Carousel.Item>
+            <img src={`https://picsum.photos/400/250?${Math.random()}`} />
+        </Carousel.Item>
+        <Carousel.Item>
+            <img src={`https://picsum.photos/400/250?${Math.random()}`} />
+        </Carousel.Item>
+        <Carousel.Item>
+            <img src={`https://picsum.photos/300/250?${Math.random()}`} />
+        </Carousel.Item>
+        <Carousel.Item>
+            <img src={`https://picsum.photos/400/250?${Math.random()}`} />
+        </Carousel.Item>
+        <Carousel.Item>
+            <img src={`https://picsum.photos/400/250?${Math.random()}`} />
+        </Carousel.Item>
+        <Carousel.Item>
+            <img src={`https://picsum.photos/400/250?${Math.random()}`} />
+        </Carousel.Item>
+        <Carousel.Item>
+            <img src={`https://picsum.photos/400/250?${Math.random()}`} />
+        </Carousel.Item>
+        <Carousel.Item>
+            <img src={`https://picsum.photos/400/250?${Math.random()}`} />
+        </Carousel.Item>
+        <Carousel.Item>
+            <img src={`https://picsum.photos/400/250?${Math.random()}`} />
+        </Carousel.Item>
+        <Carousel.Item>
+            <img src={`https://picsum.photos/400/250?${Math.random()}`} />
+        </Carousel.Item>
+    </Carousel>
+);
+
+export const DisabledAutoPlay: ComponentStory<typeof Carousel> = (props) => (
+    <Carousel {...props} autoPlay={false}>
         <Carousel.Item>
             <img src={`https://picsum.photos/400/250?${Math.random()}`} />
         </Carousel.Item>

@@ -8,17 +8,20 @@ import {
     useCurrentIndex,
 } from './state/Context';
 import { Thumbnails } from './Thumbnails';
+import { Pause } from 'react-feather';
 
 interface CarouselProps {
     children: React.ReactNode[];
+    autoPlay?: boolean;
+    interval?: number;
 }
-function CarouselRoot({ children }: CarouselProps) {
+function CarouselRoot(props: CarouselProps) {
     return (
         <ThemeProvider>
             <CarouselProvider>
                 <Wrapper>
-                    <CarouselInner>{children}</CarouselInner>
-                    <Thumbnails>{children}</Thumbnails>
+                    <CarouselInner {...props} />
+                    <Thumbnails>{props.children}</Thumbnails>
                 </Wrapper>
             </CarouselProvider>
         </ThemeProvider>
@@ -31,19 +34,48 @@ const Wrapper = styled.div`
     position: relative;
 `;
 
-interface CarouselInnerProps {
-    children: React.ReactNode[];
-}
+type CarouselInnerProps = CarouselProps;
 
-function CarouselInner({ children }: CarouselInnerProps) {
+function CarouselInner({
+    children,
+    autoPlay = true,
+    interval = 3000,
+}: CarouselInnerProps) {
     const currentIndex = useCurrentIndex();
     const dispatch = useCarouselDispatch();
+    const [isPaused, setIsPaused] = React.useState(false);
+
+    React.useEffect(() => {
+        if (!autoPlay) {
+            return () => undefined;
+        }
+
+        const slideInterval = setInterval(() => {
+            if (!isPaused) {
+                dispatch({ type: 'SHOW_NEXT' });
+            }
+        }, interval);
+
+        return () => {
+            if (slideInterval) {
+                clearInterval(slideInterval);
+            }
+        };
+    }, [autoPlay, interval, isPaused]);
 
     React.useEffect(() => {
         dispatch({ type: 'SET_TOTAL', payload: children.length });
     }, [children.length]);
 
-    return <Inner currentIndex={currentIndex}>{children}</Inner>;
+    return (
+        <Inner
+            currentIndex={currentIndex}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+        >
+            {children}
+        </Inner>
+    );
 }
 
 const Inner = styled.div<{ currentIndex: number }>`
