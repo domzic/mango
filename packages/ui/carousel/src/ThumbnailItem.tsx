@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import {
     useCarouselDispatch,
     useCurrentIndex,
@@ -15,7 +15,7 @@ export function ThumbnailItem({ children, index }: ThumbnailItem) {
     const total = useTotal();
     const dispatch = useCarouselDispatch();
     const [isActive, setIsActive] = React.useState(false);
-    const ref = React.useRef<HTMLLIElement>(null);
+    const ref = React.useRef<HTMLDivElement>(null);
     const prevCurrentIndex = React.useRef(currentIndex);
 
     React.useEffect(() => {
@@ -46,7 +46,7 @@ export function ThumbnailItem({ children, index }: ThumbnailItem) {
         });
     };
 
-    const onKeyPress = (e: React.KeyboardEvent<HTMLLIElement>) => {
+    const onKeyPress = (e: React.KeyboardEvent<HTMLDivElement>) => {
         switch (e.code) {
             case 'Enter':
                 return handleSelect();
@@ -72,7 +72,7 @@ export function ThumbnailItem({ children, index }: ThumbnailItem) {
     );
 }
 
-const Wrapper = styled.li`
+const Wrapper = styled.div`
     height: 100%;
     width: 84px;
     flex: 1 0 64px;

@@ -124,7 +124,7 @@ function CarouselInner({
     );
 }
 
-const Inner = styled.ol<{ currentIndex: number }>`
+const Inner = styled.section<{ currentIndex: number }>`
     white-space: nowrap;
     transition: transform 0.3s ease-in-out;
     transform: ${({ currentIndex }) => `translateX(-${currentIndex * 100}%)`};

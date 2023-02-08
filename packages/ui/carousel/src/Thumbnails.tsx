@@ -17,14 +17,16 @@ export function Thumbnails({ children, height = 64 }: ThumbnailsProps) {
                     '--thumbnails-height': height + 'px',
                 } as React.CSSProperties
             }
-            tabIndex={-1}
-            aria-labelledby="thumbnails-heading"
         >
-            <h3 id="thumbnails-heading" className="visually-hidden">
-                Thumbnails
-            </h3>
             <NavigationButton.Prev />
-            <List>
+            <List
+                role="region"
+                tabIndex={-1}
+                aria-labelledby="thumbnails-heading"
+            >
+                <h3 id="thumbnails-heading" className="visually-hidden">
+                    Thumbnails
+                </h3>
                 {React.Children.map(children, (child, index) => {
                     if (React.isValidElement(child)) {
                         return typeof child.type === 'string' ? (
@@ -42,7 +44,7 @@ export function Thumbnails({ children, height = 64 }: ThumbnailsProps) {
     );
 }
 
-const Container = styled.section`
+const Container = styled.div`
     position: absolute;
     bottom: 16px;
     left: 0;
@@ -53,7 +55,7 @@ const Container = styled.section`
     height: var(--thumbnails-height);
 `;
 
-const List = styled.ol`
+const List = styled.section`
     overflow-x: auto;
     white-space: nowrap;
     padding-inline-start: 0;

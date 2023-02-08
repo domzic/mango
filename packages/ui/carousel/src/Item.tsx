@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-interface ItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
+interface ItemProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
     children: React.ReactNode;
 }
 export function Item({ children, ...props }: ItemProps) {
@@ -16,7 +16,7 @@ export function Item({ children, ...props }: ItemProps) {
     );
 }
 
-const Wrapper = styled.li`
+const Wrapper = styled.div`
     width: 100%;
     height: 100%;
     display: inline-flex;
