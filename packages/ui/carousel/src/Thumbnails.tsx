@@ -15,7 +15,13 @@ export function Thumbnails({ children, height = 64 }: ThumbnailsProps) {
             <NavigationButton position="left">
                 <ChevronLeft />
             </NavigationButton>
-            <List style={{ '--thumbnails-height': height + 'px' }}>
+            <List
+                style={
+                    {
+                        '--thumbnails-height': height + 'px',
+                    } as React.CSSProperties
+                }
+            >
                 {React.Children.map(children, (child, index) => {
                     if (React.isValidElement(child)) {
                         return typeof child.type === 'string' ? (

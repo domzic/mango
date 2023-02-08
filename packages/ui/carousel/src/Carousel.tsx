@@ -61,7 +61,7 @@ function CarouselInner({
                 clearInterval(slideInterval);
             }
         };
-    }, [autoPlay, interval, isPaused]);
+    }, [autoPlay, interval, isPaused, currentIndex]);
 
     React.useEffect(() => {
         dispatch({ type: 'SET_TOTAL', payload: children.length });
