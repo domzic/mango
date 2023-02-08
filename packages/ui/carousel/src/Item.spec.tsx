@@ -11,6 +11,6 @@ describe('Item', () => {
 
         screen.debug();
 
-        expect(screen.getByRole('img')).toBeInTheDocument();
+        expect(screen.getByRole('img')).not.toBeInTheDocument();
     });
 });
