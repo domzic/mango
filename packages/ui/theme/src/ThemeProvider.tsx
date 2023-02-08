@@ -1,4 +1,5 @@
 import { ThemeProvider as StyledComponentsProvider } from 'styled-components';
+import { GlobalStyles } from './GlobalStyles';
 
 interface ThemeProviderProps {
     children: React.ReactNode | React.ReactNode[];

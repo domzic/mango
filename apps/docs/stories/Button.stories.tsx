@@ -3,6 +3,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Carousel } from '@mango-ui/carousel';
+import { ThemeProvider, GlobalStyles } from '@mango-ui/theme';
 
 export default {
     title: 'Carousel',
@@ -13,6 +14,14 @@ export default {
             control: { type: 'select' },
         },
     },
+    decorators: [
+        (Story) => (
+            <ThemeProvider>
+                <GlobalStyles />
+                <Story />
+            </ThemeProvider>
+        ),
+    ],
 } as ComponentMeta<typeof Carousel>;
 
 export const Default: ComponentStory<typeof Carousel> = (props) => (

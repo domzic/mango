@@ -19,6 +19,7 @@ importers:
   apps/docs:
     specifiers:
       '@mango-ui/carousel': workspace:*
+      '@mango-ui/theme': workspace:*
       '@storybook/addon-actions': ^6.5.14
       '@storybook/addon-docs': ^6.5.14
       '@storybook/addon-essentials': ^6.5.14
@@ -35,6 +36,7 @@ importers:
       vite: ^2.9.15
     devDependencies:
       '@mango-ui/carousel': link:../../packages/ui/carousel
+      '@mango-ui/theme': link:../../packages/ui/theme
       '@storybook/addon-actions': 6.5.16_biqbaboplfbrettd7655fr4n2y
       '@storybook/addon-docs': 6.5.16_ph4osieeu4cb2ekcn64bvaiypa
       '@storybook/addon-essentials': 6.5.16_ph4osieeu4cb2ekcn64bvaiypa
