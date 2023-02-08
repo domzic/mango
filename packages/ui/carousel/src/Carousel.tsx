@@ -8,7 +8,7 @@ import {
     useCurrentIndex,
 } from './state/Context';
 import { Thumbnails } from './Thumbnails';
-import { Pause } from 'react-feather';
+import { useSwipeable } from 'react-swipeable';
 
 interface CarouselProps {
     children: React.ReactNode[];
@@ -67,11 +67,19 @@ function CarouselInner({
         dispatch({ type: 'SET_TOTAL', payload: children.length });
     }, [children.length]);
 
+    const swipeHandlers = useSwipeable({
+        onSwipedLeft: () => dispatch({ type: 'SHOW_NEXT' }),
+        onSwipedRight: () => dispatch({ type: 'SHOW_PREV' }),
+    });
+
     return (
         <Inner
+            {...swipeHandlers}
             currentIndex={currentIndex}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={() => setIsPaused(true)}
+            onTouchEnd={() => setIsPaused(false)}
         >
             {children}
         </Inner>
