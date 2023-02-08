@@ -16,28 +16,16 @@ export function ThumbnailItem({ children, index }: ThumbnailItem) {
     const dispatch = useCarouselDispatch();
     const [isActive, setIsActive] = React.useState(false);
     const ref = React.useRef<HTMLDivElement>(null);
-    const prevCurrentIndex = React.useRef(currentIndex);
 
     React.useEffect(() => {
         setIsActive(currentIndex === index);
     }, [currentIndex, index]);
 
     React.useEffect(() => {
-        if (
-            (prevCurrentIndex.current > currentIndex &&
-                index == currentIndex - 1) ||
-            (prevCurrentIndex.current < currentIndex &&
-                index == currentIndex + 1)
-        ) {
+        if (isActive) {
             ref.current!.scrollIntoView({ behavior: 'smooth' });
         }
-    }, [index, currentIndex]);
-
-    React.useEffect(() => {
-        return () => {
-            prevCurrentIndex.current = currentIndex;
-        };
-    }, [currentIndex]);
+    }, [isActive]);
 
     const handleSelect = () => {
         dispatch({
