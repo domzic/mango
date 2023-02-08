@@ -1,30 +1,26 @@
+import { ChevronLeft, ChevronRight } from 'react-feather';
 import styled from 'styled-components';
 import { useCarouselDispatch } from './state/Context';
 
-interface NavigationButtonProps {
-    children: React.ReactNode;
-    position: 'left' | 'right';
-}
-
-export function NavigationButton({
-    children,
-    position,
-}: NavigationButtonProps) {
+export function Prev() {
     const dispatch = useCarouselDispatch();
     return (
-        <Button
-            onClick={() =>
-                dispatch({
-                    type: position === 'left' ? 'SHOW_PREV' : 'SHOW_NEXT',
-                })
-            }
-        >
-            {children}
-        </Button>
+        <PrevButton onClick={() => dispatch({ type: 'SHOW_PREV' })}>
+            <ChevronLeft />
+        </PrevButton>
     );
 }
 
-const Button = styled.button`
+export function Next() {
+    const dispatch = useCarouselDispatch();
+    return (
+        <NextButton onClick={() => dispatch({ type: 'SHOW_NEXT' })}>
+            <ChevronRight />
+        </NextButton>
+    );
+}
+
+const ButtonBase = styled.button`
     cursor: pointer;
     background: none;
     border: none;
@@ -32,8 +28,35 @@ const Button = styled.button`
     width: 36px;
     height: 36px;
     margin: 8px;
+    color: ${(props) => props.theme.colors.gray};
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.2s ease;
 
     svg {
         display: block;
+        color: currentColor;
+    }
+
+    &:hover {
+        color: ${(props) => props.theme.colors.grayLight};
     }
 `;
+
+const PrevButton = styled(ButtonBase)`
+    left: -42px;
+
+    &:hover {
+        transform: translateY(-50%) translateX(-4px);
+    }
+`;
+
+const NextButton = styled(ButtonBase)`
+    right: -42px;
+
+    &:hover {
+        transform: translateY(-50%) translateX(4px);
+    }
+`;
+export const NavigationButton = Object.assign({}, { Prev, Next });

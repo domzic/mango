@@ -88,7 +88,7 @@ const Wrapper = styled.li`
     background: #fff;
     box-shadow: 0px 0px 8px -4px rgb(0 0 0 / 80%);
     position: relative;
-    border-radius: 4px;
+    border-radius: 2px;
 
     & img {
         height: 100%;
@@ -98,27 +98,6 @@ const Wrapper = styled.li`
     }
 
     &.active {
-        --borderWidth: 2px;
-        &:after {
-            content: '';
-            position: absolute;
-            top: calc(-1 * var(--borderWidth));
-            left: calc(-1 * var(--borderWidth));
-            height: calc(100% + var(--borderWidth) * 2);
-            width: calc(100% + var(--borderWidth) * 2);
-            background: linear-gradient(
-                60deg,
-                ${(props) => props.theme.colors.background.primary},
-                ${(props) => props.theme.colors.background.secondary},
-                ${(props) => props.theme.colors.background.tertiary},
-                ${(props) => props.theme.colors.background.primary},
-                ${(props) => props.theme.colors.background.secondary},
-                ${(props) => props.theme.colors.background.tertiary}
-            );
-            border-radius: calc(2 * var(--borderWidth));
-            z-index: -1;
-            animation: ${animateGradient} 5s ease alternate infinite;
-            background-size: 200% 200%;
-        }
+        // TODO
     }
 `;

@@ -11,17 +11,15 @@ interface ThumbnailsProps {
 }
 export function Thumbnails({ children, height = 64 }: ThumbnailsProps) {
     return (
-        <Container>
-            <NavigationButton position="left">
-                <ChevronLeft />
-            </NavigationButton>
-            <List
-                style={
-                    {
-                        '--thumbnails-height': height + 'px',
-                    } as React.CSSProperties
-                }
-            >
+        <Container
+            style={
+                {
+                    '--thumbnails-height': height + 'px',
+                } as React.CSSProperties
+            }
+        >
+            <NavigationButton.Prev />
+            <List>
                 {React.Children.map(children, (child, index) => {
                     if (React.isValidElement(child)) {
                         return typeof child.type === 'string' ? (
@@ -34,27 +32,31 @@ export function Thumbnails({ children, height = 64 }: ThumbnailsProps) {
                     }
                 })}
             </List>
-            <NavigationButton position="right">
-                <ChevronRight />
-            </NavigationButton>
+            <NavigationButton.Next />
         </Container>
     );
 }
 
 const Container = styled.div`
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: absolute;
+    bottom: 16px;
+    left: 0;
+    right: 0;
+    width: max(50%, 300px);
+    margin: 0 auto;
+    padding: 8px;
+    height: var(--thumbnails-height);
 `;
 
 const List = styled.ol`
-    position: relative;
-    width: max(50%, 300px);
     overflow-x: auto;
     white-space: nowrap;
-    height: var(--thumbnails-height);
-    padding: 8px;
+    padding-inline-start: 0;
+    padding: 4px;
+
+    li {
+        height: 100%;
+    }
 
     & li:not(:last-of-type) {
         margin-right: 4px;

@@ -13,21 +13,16 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     );
 }
 
-interface Theme {
+const theme = {
     colors: {
-        background: {
-            primary: string;
-            secondary: string;
-            tertiary: string;
-        };
-    };
-}
-const theme: Theme = {
-    colors: {
-        background: {
-            primary: 'hsl(148,60%,40%)',
-            secondary: 'hsl(352,100%,62%)',
-            tertiary: 'hsl(33, 100%, 64%)',
-        },
+        blue: '#1fb6ff',
+        purple: '#7e5bef',
+        pink: '#ff49db',
+        orange: '#ff7849',
+        green: '#13ce66',
+        yellow: '#ffc82c',
+        grayDark: '#273444',
+        gray: '#8492a6',
+        grayLight: '#d3dce6',
     },
 };
