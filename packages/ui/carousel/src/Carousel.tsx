@@ -1,7 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from '@mango-ui/theme';
 import styled from 'styled-components';
-import { Navigation } from './Navigation';
 import { Item } from './Item';
 import {
     CarouselProvider,
@@ -20,7 +19,6 @@ function CarouselRoot({ children }: CarouselProps) {
                 <Wrapper>
                     <CarouselInner>{children}</CarouselInner>
                     <Thumbnails>{children}</Thumbnails>
-                    <Navigation />
                 </Wrapper>
             </CarouselProvider>
         </ThemeProvider>
@@ -30,6 +28,7 @@ const Wrapper = styled.div`
     width: 100%;
     height: 100%;
     overflow: hidden;
+    position: relative;
 `;
 
 interface CarouselInnerProps {

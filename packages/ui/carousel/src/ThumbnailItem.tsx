@@ -53,7 +53,7 @@ const animateGradient = keyframes`
 
 const Wrapper = styled.li`
     height: 100%;
-    width: 64px;
+    width: 84px;
     flex: 1 0 64px;
     display: inline-flex;
     align-items: center;

@@ -28,6 +28,7 @@
     },
     "peerDependencies": {
         "@mango-ui/theme": "workspace:*",
-        "styled-components": "^5.3.6"
+        "styled-components": "^5.3.6",
+        "react-feather": "^2.0.10"
     }
 }

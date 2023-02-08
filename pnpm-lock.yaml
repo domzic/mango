@@ -74,12 +74,14 @@ importers:
       eslint: ^8.15.0
       eslint-config-mango: workspace:*
       react: ^18.1.0
+      react-feather: ^2.0.10
       styled-components: ^5.3.6
       tsconfig: workspace:*
       tsup: ^5.10.1
       typescript: ^4.5.3
     dependencies:
       '@mango-ui/theme': link:../theme
+      react-feather: 2.0.10_react@18.2.0
       styled-components: 5.3.6_pumtretovylab5lwhztzjp2kuy
     devDependencies:
       '@types/react': 18.0.27
@@ -10350,6 +10352,15 @@ packages:
       react-dom: 18.2.0_react@18.2.0
       react-is: 17.0.2
     dev: true
+
+  /react-feather/2.0.10_react@18.2.0:
+    resolution: {integrity: sha512-BLhukwJ+Z92Nmdcs+EMw6dy1Z/VLiJTzEQACDUEnWMClhYnFykJCGWQx+NmwP/qQHGX/5CzQ+TGi8ofg2+HzVQ==}
+    peerDependencies:
+      react: '>=16.8.6'
+    dependencies:
+      prop-types: 15.8.1
+      react: 18.2.0
+    dev: false
 
   /react-inspector/5.1.1_react@18.2.0:
     resolution: {integrity: sha512-GURDaYzoLbW8pMGXwYPDBIv6nqei4kK7LPRZ9q9HCZF54wqXz/dnylBp/kfE9XmekBhHvLDdcYeyIwSrvtOiWg==}
