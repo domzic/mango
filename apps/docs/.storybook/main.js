@@ -1,8 +1,13 @@
-const path = require('path')
+const path = require('path');
 
 module.exports = {
-    stories: ['../stories/**/*.stories.tsx'],
-    addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
+    stories: ['../stories/**/*.stories.mdx'],
+    addons: [
+        '@storybook/addon-links',
+        '@storybook/addon-essentials',
+        '@storybook/addon-docs',
+        'storybook-dark-mode',
+    ],
     framework: '@storybook/react',
     core: {
         builder: '@storybook/builder-vite',
@@ -21,6 +26,6 @@ module.exports = {
                     },
                 ],
             },
-        }
+        };
     },
-}
+};

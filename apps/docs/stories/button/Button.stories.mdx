@@ -1,0 +1,66 @@
+import { Carousel } from '@mango-ui/carousel';
+import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
+
+<Meta
+    title="Components/Carousel"
+    component={Carousel}
+    parameters={{ viewMode: 'docs', previewTabs: { canvas: { hidden: true } } }}
+/>
+
+# Carousel
+
+```jsx
+import { Carousel } from '@mango-ui/carousel';
+```
+
+## Props
+
+<ArgsTable of={Carousel} />
+
+## Examples
+
+<Canvas>
+    <Story name="Default">
+        <Carousel>
+            <Carousel.Item>
+                <img src={`https://picsum.photos/700/400?${Math.random()}`} />
+            </Carousel.Item>
+            <Carousel.Item>
+                <img src={`https://picsum.photos/700/400?${Math.random()}`} />
+            </Carousel.Item>
+            <Carousel.Item>
+                <img src={`https://picsum.photos/700/400?${Math.random()}`} />
+            </Carousel.Item>
+            <Carousel.Item>
+                <img src={`https://picsum.photos/700/400?${Math.random()}`} />
+            </Carousel.Item>
+            <Carousel.Item>
+                <img src={`https://picsum.photos/700/400?${Math.random()}`} />
+            </Carousel.Item>
+            <Carousel.Item>
+                <img src={`https://picsum.photos/700/400?${Math.random()}`} />
+            </Carousel.Item>
+            <Carousel.Item>
+                <img src={`https://picsum.photos/700/400?${Math.random()}`} />
+            </Carousel.Item>
+            <Carousel.Item>
+                <img src={`https://picsum.photos/700/400?${Math.random()}`} />
+            </Carousel.Item>
+            <Carousel.Item>
+                <img src={`https://picsum.photos/700/400?${Math.random()}`} />
+            </Carousel.Item>
+            <Carousel.Item>
+                <img src={`https://picsum.photos/700/400?${Math.random()}`} />
+            </Carousel.Item>
+            <Carousel.Item>
+                <img src={`https://picsum.photos/700/400?${Math.random()}`} />
+            </Carousel.Item>
+            <Carousel.Item>
+                <img src={`https://picsum.photos/700/400?${Math.random()}`} />
+            </Carousel.Item>
+            <Carousel.Item>
+                <img src={`https://picsum.photos/700/400?${Math.random()}`} />
+            </Carousel.Item>
+        </Carousel>
+    </Story>
+</Canvas>
