@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Carousel } from './';
+import { Carousel } from '@mango-ui/carousel';
 import { ThemeProvider, GlobalStyles } from '@mango-ui/theme';
 
 export default {
