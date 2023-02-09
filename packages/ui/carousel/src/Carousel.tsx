@@ -12,7 +12,7 @@ import { Thumbnails } from './Thumbnails';
 import { useSwipeable } from 'react-swipeable';
 import { VisuallyHidden } from '@mango-ui/visually-hidden';
 
-interface CarouselProps {
+export interface CarouselProps {
     children: React.ReactNode[];
     ariaLabel?: string;
     autoPlay?: boolean;

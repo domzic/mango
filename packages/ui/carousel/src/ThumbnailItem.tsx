@@ -23,7 +23,9 @@ export function ThumbnailItem({ children, index }: ThumbnailItem) {
 
     React.useEffect(() => {
         if (isActive) {
-            ref.current!.scrollIntoView({ behavior: 'smooth' });
+            ref.current!.scrollIntoView({
+                behavior: 'smooth',
+            });
         }
     }, [isActive]);
 
