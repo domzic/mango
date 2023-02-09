@@ -80,6 +80,7 @@ importers:
   packages/ui/carousel:
     specifiers:
       '@mango-ui/theme': workspace:*
+      '@mango-ui/visually-hidden': workspace:*
       '@testing-library/dom': ^8.20.0
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': ^13.4.0
@@ -102,6 +103,7 @@ importers:
       typescript: ^4.5.3
     dependencies:
       '@mango-ui/theme': link:../theme
+      '@mango-ui/visually-hidden': link:../visually-hidden
       react-feather: 2.0.10_react@18.2.0
       react-swipeable: 7.0.0_react@18.2.0
       styled-components: 5.3.6_7i5myeigehqah43i5u7wbekgba
@@ -125,6 +127,31 @@ importers:
       typescript: 4.9.5
 
   packages/ui/theme:
+    specifiers:
+      '@types/react': ^18.0.9
+      '@types/react-dom': ^18.0.4
+      '@types/styled-components': ^5.1.26
+      eslint: ^8.15.0
+      eslint-config-mango: workspace:*
+      react: ^18.1.0
+      styled-components: ^5.3.6
+      tsconfig: workspace:*
+      tsup: ^5.10.1
+      typescript: ^4.5.3
+    dependencies:
+      styled-components: 5.3.6_7i5myeigehqah43i5u7wbekgba
+    devDependencies:
+      '@types/react': 18.0.27
+      '@types/react-dom': 18.0.10
+      '@types/styled-components': 5.1.26
+      eslint: 8.33.0
+      eslint-config-mango: link:../../config/eslint-config-mango
+      react: 18.2.0
+      tsconfig: link:../../config/tsconfig
+      tsup: 5.12.9_typescript@4.9.5
+      typescript: 4.9.5
+
+  packages/ui/visually-hidden:
     specifiers:
       '@types/react': ^18.0.9
       '@types/react-dom': ^18.0.4

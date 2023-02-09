@@ -1,3 +1,4 @@
+import { VisuallyHidden } from '@mango-ui/visually-hidden';
 import { ChevronLeft, ChevronRight } from 'react-feather';
 import styled from 'styled-components';
 import { useCarouselDispatch } from './state/Context';
@@ -6,7 +7,7 @@ export function Prev() {
     const dispatch = useCarouselDispatch();
     return (
         <PrevButton onClick={() => dispatch({ type: 'SHOW_PREV' })}>
-            <span className="visually-hidden">Previous</span>
+            <VisuallyHidden id="thumbnails-heading">Prev</VisuallyHidden>
             <ChevronLeft />
         </PrevButton>
     );
@@ -16,7 +17,7 @@ export function Next() {
     const dispatch = useCarouselDispatch();
     return (
         <NextButton onClick={() => dispatch({ type: 'SHOW_NEXT' })}>
-            <span className="visually-hidden">Next</span>
+            <VisuallyHidden id="thumbnails-heading">Next</VisuallyHidden>
             <ChevronRight />
         </NextButton>
     );
@@ -33,7 +34,7 @@ const ButtonBase = styled.button`
     color: ${(props) => props.theme.colors.gray};
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-65%);
     transition: transform 0.2s ease;
 
     svg {
@@ -50,7 +51,7 @@ const PrevButton = styled(ButtonBase)`
     left: -42px;
 
     &:hover {
-        transform: translateY(-50%) translateX(-4px);
+        transform: translateY(-65%) translateX(-4px);
     }
 `;
 
@@ -58,7 +59,7 @@ const NextButton = styled(ButtonBase)`
     right: -42px;
 
     &:hover {
-        transform: translateY(-50%) translateX(4px);
+        transform: translateY(-65%) translateX(4px);
     }
 `;
 export const NavigationButton = Object.assign({}, { Prev, Next });

@@ -10,6 +10,7 @@ import {
 } from './state/Context';
 import { Thumbnails } from './Thumbnails';
 import { useSwipeable } from 'react-swipeable';
+import { VisuallyHidden } from '@mango-ui/visually-hidden';
 
 interface CarouselProps {
     children: React.ReactNode[];
@@ -125,9 +126,7 @@ function CarouselInner({
                     : 'transform 0.3s ease-in-out',
             }}
         >
-            <h3 id="heading" className="visually-hidden">
-                {ariaLabel}
-            </h3>
+            <VisuallyHidden id="heading">{ariaLabel}</VisuallyHidden>
             {React.Children.map(children, (child, index) => {
                 if (React.isValidElement(child)) {
                     return typeof child.type === 'string' ? (

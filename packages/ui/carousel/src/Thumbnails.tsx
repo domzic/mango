@@ -1,3 +1,4 @@
+import { VisuallyHidden } from '@mango-ui/visually-hidden';
 import React from 'react';
 import { ChevronLeft, ChevronRight } from 'react-feather';
 
@@ -24,9 +25,9 @@ export function Thumbnails({ children, height = 64 }: ThumbnailsProps) {
                 tabIndex={-1}
                 aria-labelledby="thumbnails-heading"
             >
-                <h3 id="thumbnails-heading" className="visually-hidden">
+                <VisuallyHidden id="thumbnails-heading">
                     Thumbnails
-                </h3>
+                </VisuallyHidden>
                 {React.Children.map(children, (child, index) => {
                     if (React.isValidElement(child)) {
                         return typeof child.type === 'string' ? (

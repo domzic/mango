@@ -4,7 +4,14 @@ import { Meta, Story, Canvas, ArgsTable } from '@storybook/addon-docs';
 <Meta
     title="Components/Carousel"
     component={Carousel}
-    parameters={{ viewMode: 'docs', previewTabs: { canvas: { hidden: true } } }}
+    decorators={[
+        (Story) => (
+            <div style={{ maxWidth: 1024, margin: '0 auto' }}>
+                <Story />
+            </div>
+        ),
+    ]}
+    //parameters={{ viewMode: 'docs', previewTabs: { canvas: { hidden: true } } }}
 />
 
 # Carousel
