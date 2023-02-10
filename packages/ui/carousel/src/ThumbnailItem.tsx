@@ -6,11 +6,16 @@ import {
     useTotal,
 } from './state/Context';
 
-interface ThumbnailItem {
+interface ThumbnailItemProps {
     children: React.ReactNode;
     index: number;
+    onActive: (offsetLeft: number) => void;
 }
-export function ThumbnailItem({ children, index }: ThumbnailItem) {
+export function ThumbnailItem({
+    children,
+    index,
+    onActive,
+}: ThumbnailItemProps) {
     const currentIndex = useCurrentIndex();
     const total = useTotal();
     const dispatch = useCarouselDispatch();
@@ -23,9 +28,7 @@ export function ThumbnailItem({ children, index }: ThumbnailItem) {
 
     React.useEffect(() => {
         if (isActive) {
-            ref.current!.scrollIntoView({
-                behavior: 'smooth',
-            });
+            onActive(ref.current!.offsetLeft + ref.current!.clientWidth / 2);
         }
     }, [isActive]);
 
@@ -64,7 +67,6 @@ export function ThumbnailItem({ children, index }: ThumbnailItem) {
 
 const Wrapper = styled.div`
     height: 100%;
-    width: 84px;
     flex: 1 0 64px;
     display: inline-flex;
     align-items: center;

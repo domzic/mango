@@ -8,19 +8,23 @@ import { ThumbnailItem } from './ThumbnailItem';
 
 interface ThumbnailsProps {
     children: React.ReactNode | React.ReactNode[];
-    height?: number;
 }
-export function Thumbnails({ children, height = 64 }: ThumbnailsProps) {
+export function Thumbnails({ children }: ThumbnailsProps) {
+    const sectionRef = React.useRef<HTMLDivElement>(null);
+
+    const onActiveChange = (itemOffsetLeft: number) => {
+        const width = sectionRef.current!.offsetWidth;
+        sectionRef.current!.scroll({
+            left: itemOffsetLeft - width / 2,
+            behavior: 'smooth',
+        });
+    };
+
     return (
-        <Container
-            style={
-                {
-                    '--thumbnails-height': height + 'px',
-                } as React.CSSProperties
-            }
-        >
+        <Container>
             <NavigationButton.Prev />
-            <List
+            <Section
+                ref={sectionRef}
                 role="region"
                 tabIndex={-1}
                 aria-labelledby="thumbnails-heading"
@@ -33,13 +37,16 @@ export function Thumbnails({ children, height = 64 }: ThumbnailsProps) {
                         return typeof child.type === 'string' ? (
                             child
                         ) : (
-                            <ThumbnailItem index={index}>
+                            <ThumbnailItem
+                                index={index}
+                                onActive={onActiveChange}
+                            >
                                 {child.props.children}
                             </ThumbnailItem>
                         );
                     }
                 })}
-            </List>
+            </Section>
             <NavigationButton.Next />
         </Container>
     );
@@ -50,21 +57,18 @@ const Container = styled.div`
     bottom: 16px;
     left: 0;
     right: 0;
-    width: max(50%, 300px);
+    width: max(50%, 400px);
     margin: 0 auto;
-    padding: 8px;
-    height: var(--thumbnails-height);
+    height: 80px;
 `;
 
-const List = styled.section`
+const Section = styled.section`
     overflow-x: auto;
+    overflow-y: hidden;
+    height: 100%;
     white-space: nowrap;
     padding-inline-start: 0;
-    padding: 4px;
-
-    li {
-        height: 100%;
-    }
+    padding: 10px;
 
     & li:not(:last-of-type) {
         margin-right: 4px;

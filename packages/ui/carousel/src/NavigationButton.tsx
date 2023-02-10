@@ -34,7 +34,7 @@ const ButtonBase = styled.button`
     color: ${(props) => props.theme.colors.gray};
     position: absolute;
     top: 50%;
-    transform: translateY(-65%);
+    transform: translateY(-50%);
     transition: transform 0.2s ease;
 
     svg {
@@ -51,7 +51,7 @@ const PrevButton = styled(ButtonBase)`
     left: -42px;
 
     &:hover {
-        transform: translateY(-65%) translateX(-4px);
+        transform: translateY(-50%) translateX(-4px);
     }
 `;
 
@@ -59,7 +59,7 @@ const NextButton = styled(ButtonBase)`
     right: -42px;
 
     &:hover {
-        transform: translateY(-65%) translateX(4px);
+        transform: translateY(-50%) translateX(4px);
     }
 `;
 export const NavigationButton = Object.assign({}, { Prev, Next });

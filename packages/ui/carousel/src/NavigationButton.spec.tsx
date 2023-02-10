@@ -1,4 +1,3 @@
-import { ThemeProvider } from '@mango-ui/theme';
 import { render, screen } from './testUtils';
 import { NavigationButton } from './NavigationButton';
 import { CarouselProvider } from './state/Context';
