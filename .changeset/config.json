@@ -6,5 +6,6 @@
     "linked": [],
     "access": "public",
     "updateInternalDependencies": "patch",
-    "ignore": ["@mango/docs"]
+    "ignore": ["@mango/docs"],
+    "baseBranch": "main"
 }
