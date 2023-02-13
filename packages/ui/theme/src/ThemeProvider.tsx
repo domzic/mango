@@ -13,15 +13,9 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     );
 }
 
+// TODO - create theme
 const theme = {
     colors: {
-        blue: '#1fb6ff',
-        purple: '#7e5bef',
-        pink: '#ff49db',
-        orange: '#ff7849',
-        green: '#13ce66',
-        yellow: '#ffc82c',
-        grayDark: '#273444',
         gray: '#8492a6',
         grayLight: '#d3dce6',
     },

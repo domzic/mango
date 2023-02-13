@@ -1,5 +1,5 @@
 import { ThemeProvider } from '@mango-ui/theme';
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { render, RenderOptions } from '@testing-library/react';
 
 // TODO - move to separate package
@@ -9,7 +9,7 @@ const Wrapper = ({ children }: { children: React.ReactNode }) => {
 };
 
 const customRender = (
-    ui: ReactElement,
+    ui: React.ReactElement,
     options?: Omit<RenderOptions, 'wrapper'>
 ) => render(ui, { wrapper: Wrapper, ...options });
 

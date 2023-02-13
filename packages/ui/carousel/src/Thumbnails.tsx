@@ -1,6 +1,5 @@
 import { VisuallyHidden } from '@mango-ui/visually-hidden';
 import React from 'react';
-import { ChevronLeft, ChevronRight } from 'react-feather';
 
 import styled from 'styled-components';
 import { NavigationButton } from './NavigationButton';
@@ -14,7 +13,7 @@ export function Thumbnails({ children }: ThumbnailsProps) {
 
     const onActiveChange = (itemOffsetLeft: number) => {
         const width = sectionRef.current!.offsetWidth;
-        sectionRef.current!.scroll({
+        sectionRef.current?.scroll({
             left: itemOffsetLeft - width / 2,
             behavior: 'smooth',
         });
@@ -59,7 +58,11 @@ const Container = styled.div`
     right: 0;
     width: max(50%, 400px);
     margin: 0 auto;
-    height: 80px;
+    height: 64px;
+
+    @media (min-width: 768px) {
+        height: 80px;
+    }
 `;
 
 const Section = styled.section`

@@ -15,7 +15,7 @@ const CarouselContext = React.createContext<ContextValue | undefined>(
     undefined
 );
 
-interface CarouselProviderProps {
+export interface CarouselProviderProps {
     children: React.ReactNode | React.ReactNode[];
     initialState?: ContextState;
 }
@@ -27,7 +27,6 @@ export function CarouselProvider({
         carouselReducer,
         initialState || { currentIndex: 0, total: 0 }
     );
-
     return (
         <CarouselContext.Provider value={{ state, dispatch }}>
             {children}
